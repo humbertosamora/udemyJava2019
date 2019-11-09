@@ -42,6 +42,9 @@ public class Account {
 	}
 
 	public void setWithdrawLimit(Double withdrawLimit) {
+		if (withdrawLimit < 10) {
+			throw new IllegalArgumentException("Set withdraw limit error: The limit must be at least $ 10.");
+		}
 		this.withdrawLimit = withdrawLimit;
 	}
 
