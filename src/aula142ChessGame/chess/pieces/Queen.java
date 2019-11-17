@@ -5,26 +5,30 @@ import aula142ChessGame.boardgame.Position;
 import aula142ChessGame.chess.ChessPiece;
 import aula142ChessGame.chess.Color;
 
-public class Rook extends ChessPiece {
+public class Queen extends ChessPiece {
 
-	public Rook(Board board, Color color) {
+	public Queen(Board board, Color color) {
 		super(board, color);
 	}
 	
 	@Override
-	public String toString () {
-		return "R";
+	public String toString() {
+		return "Q";
 	}
-
+	
 	@Override
 	public boolean[][] possibleMoves() {
 		boolean [][] mat = new boolean[board.getRows()][board.getColumns()];
 		
-		// Rook moves along lines or columns
+		// Queen moves along lines, columns and diagonals
 		int[][] moves = {	{ -1,  0 },		// above
 							{  0, -1 },		// left
 							{ +1,  0 },		// below
-							{  0, +1 } };	// right
+							{  0, +1 },		// right
+							{ -1, -1 },		// diagonal north west
+							{ +1, -1 },		// diagonal south west
+							{ +1, +1 },		// diagonal south east
+							{ -1, +1 } };	// diagonal north east
 		
 		Position p = new Position(0,0);
 		
@@ -45,4 +49,5 @@ public class Rook extends ChessPiece {
 		
 		return mat;
 	}
+	
 }

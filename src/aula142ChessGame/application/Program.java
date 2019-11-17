@@ -2,21 +2,23 @@ package aula142ChessGame.application;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 import aula142ChessGame.boardgame.BoardException;
 import aula142ChessGame.chess.ChessMatch;
-import aula142ChessGame.chess.ChessPiece;
 import aula142ChessGame.chess.ChessPosition;
 
 public class Program {
-
+	
+	public static Scanner sc = new Scanner(System.in);
+		
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
 		ChessMatch chessMatch = new ChessMatch();
 		
 		while (!chessMatch.getCheckMate()) {
 			try {
+				
 				UI.clearScreen();
 				UI.printMatch(chessMatch);
 				
@@ -33,7 +35,7 @@ public class Program {
 				ChessPosition target = UI.readChessPosition(sc);
 				chessMatch.validateTargetPosition(source, target);
 				
-				chessMatch.performChessMove(source, target);
+				chessMatch.performChessMove(source, target, readPromotionType);
 				
 			} catch (BoardException e) {
 				System.out.println(e.getMessage());
@@ -55,7 +57,32 @@ public class Program {
 		UI.printMatch(chessMatch);
 		sc.close();
 		
-		/* Próxima aula: 164 */
 	}
+	
+	// Supplier function used to read the promotion piece type needed in method performChessMove.
+	// Inside that method (which is in a inner application layer) the chessMatch must know the
+	// promoted type to testCheck and testCheckMat against opponent after promotion a Pawn.
+	public static Supplier <Character> readPromotionType = () -> {
+		
+		while (true) {
+			Character type;
+			
+			try {
+				System.out.print("Choose a piece to promotion (B/K/Q/R): ");
+				type = sc.nextLine().trim().charAt(0);
+				
+				if (type!='B' && type!='N' && type!='Q' && type!='R') {
+					System.out.println("Type not allowed!");
+					continue;
+				}
+				
+				return type;
+			}
+			catch(Exception e)
+			{
+				System.out.println(e.getMessage());
+			}
+		}
+	};
 	
 }

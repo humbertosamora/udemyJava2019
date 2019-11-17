@@ -86,8 +86,4 @@ public class Board {
 		return piece(position) != null;
 	}
 	
-	@Override
-	public String toString() {
-		return "";
-	}
 }
