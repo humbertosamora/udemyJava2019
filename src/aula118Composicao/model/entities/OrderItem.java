@@ -33,6 +33,10 @@ public class OrderItem {
 		if (price >= 0) this.price = price;
 	}
 	
+	public String getProductName() {
+		return product.getName();
+	}
+	
 	public Double subTotal() {
 		return quantity * price;
 	}
