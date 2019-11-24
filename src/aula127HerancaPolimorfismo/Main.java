@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import aula118Composicao.model.entities.Product;
 import aula127HerancaPolimorfismo.entities.ImportedProduct;
-import aula127HerancaPolimorfismo.entities.Product;
 import aula127HerancaPolimorfismo.entities.UsedProduct;
 
 public class Main {
@@ -60,7 +60,7 @@ public class Main {
 		
 		System.out.println();
 		System.out.println("PRICE TAGS:");
-		products.forEach(s -> System.out.println(s.priceTag()));
+		products.forEach(s -> System.out.println(s));
 		
 		sc.close();
 	}

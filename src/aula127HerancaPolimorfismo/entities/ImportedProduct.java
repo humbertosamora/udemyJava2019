@@ -1,5 +1,7 @@
 package aula127HerancaPolimorfismo.entities;
 
+import aula118Composicao.model.entities.Product;
+
 public class ImportedProduct extends Product {
 	private Double customsFee;
 	
@@ -21,7 +23,7 @@ public class ImportedProduct extends Product {
 	}
 	
 	@Override
-	public String priceTag() {
+	public String toString() {
 		return	getName() + " $ " +
 				String.format("%.2f", getPrice() + customsFee) +
 				String.format(" (Customs fee: $ %.2f)", customsFee);

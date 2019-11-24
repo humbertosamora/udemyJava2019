@@ -3,6 +3,8 @@ package aula127HerancaPolimorfismo.entities;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import aula118Composicao.model.entities.Product;
+
 public class UsedProduct extends Product {
 	private Date manufactureDate;
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -25,7 +27,7 @@ public class UsedProduct extends Product {
 	}
 	
 	@Override
-	public String priceTag() {
+	public String toString() {
 		return	getName() + " (used) $ " +
 				String.format("%.2f", getPrice()) +
 				" (Manufacture date: " + sdf.format(manufactureDate) + ")";
