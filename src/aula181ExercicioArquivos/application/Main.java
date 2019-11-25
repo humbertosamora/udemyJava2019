@@ -28,7 +28,7 @@ public class Main {
 		System.out.print("Enter file name: ");
 		
 		Path inPath = Paths.get(sc.nextLine());
-		Path outPath = Paths.get(inPath.getParent() + "\\out\\summary.csv");
+		Path outPath = Paths.get(inPath.getParent() + "\\out\\aula181summary.csv");
 		
 		File directory = new File(inPath.getParent() + "\\out");
 		if (!directory.exists()) {
